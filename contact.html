@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | Tanner Freitag</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <header>
+    <h1><a href="index.html">Tanner Freitag</a></h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="contact" class="theme-orange">
+      <h2>Contact Me</h2>
+      <form id="contact-form">
+        <label for="facebook">Facebook Profile URL:</label>
+        <input type="url" id="facebook" name="facebook" placeholder="https://facebook.com/yourprofile" required>
+
+        <label for="instagram">Instagram Profile URL:</label>
+        <input type="url" id="instagram" name="instagram" placeholder="https://instagram.com/yourprofile" required>
+
+        <button type="submit">Submit</button>
+      </form>
+
+      <div id="submitted-links"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Tanner Freitag. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.getElementById('contact-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const fb = document.getElementById('facebook').value;
+      const ig = document.getElementById('instagram').value;
+
+      document.getElementById('submitted-links').innerHTML = `
+        <p><strong>Submitted Links:</strong></p>
+        <p>Facebook: <a href="${fb}" target="_blank">${fb}</a></p>
+        <p>Instagram: <a href="${ig}" target="_blank">${ig}</a></p>
+      `;
+
+      this.reset();
+    });
+  </script>
+</body>
+
+</html>
