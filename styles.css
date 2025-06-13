@@ -1,6 +1,4 @@
-/* style.css */
-
-/* Google Font */
+/* Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
 
 * {
@@ -13,9 +11,11 @@ body {
   font-family: 'Inter', sans-serif;
   background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
   color: #f0f0f0;
+  line-height: 1.6;
   overflow-x: hidden;
 }
 
+/* HEADER */
 header {
   background: linear-gradient(90deg, #1e1e1e, #2a2a2a);
   padding: 1.2rem 2rem;
@@ -69,8 +69,10 @@ nav ul li a.active::after {
 nav ul li a:hover,
 nav ul li a.active {
   color: #1e90ff;
+  text-shadow: 0 0 5px #1e90ff, 0 0 10px #1e90ff;
 }
 
+/* MAIN SECTIONS */
 main {
   padding: 3rem 2rem;
   display: flex;
@@ -80,19 +82,25 @@ main {
 }
 
 section {
-  width: 100%;
-  max-width: 900px;
-  padding: 2rem;
-  border-radius: 20px;
   background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(12px);
-  box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
-  margin-bottom: 3rem;
-  transition: transform 0.4s ease;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  padding: 2rem;
+  border-radius: 16px;
+  margin: 2rem auto;
+  max-width: 900px;
+  animation: fadeInUp 0.7s ease-out;
 }
 
-section:hover {
-  transform: scale(1.015);
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 section h2 {
@@ -102,6 +110,28 @@ section h2 {
   text-shadow: 0 0 5px rgba(30, 144, 255, 0.3);
 }
 
+/* THEME COLORS */
+.theme-blue {
+  background: rgba(30, 144, 255, 0.1);
+  border-left: 5px solid #1e90ff;
+}
+
+.theme-green {
+  background: rgba(0, 128, 0, 0.1);
+  border-left: 5px solid #32cd32;
+}
+
+.theme-purple {
+  background: rgba(128, 0, 128, 0.1);
+  border-left: 5px solid #ba55d3;
+}
+
+.theme-orange {
+  background: rgba(255, 140, 0, 0.1);
+  border-left: 5px solid #ff8c00;
+}
+
+/* FORM STYLING */
 form {
   display: flex;
   flex-direction: column;
@@ -129,51 +159,74 @@ input:focus {
   box-shadow: 0 0 8px #1e90ff77;
 }
 
-button {
-  background: linear-gradient(90deg, #1e90ff, #0073e6);
-  color: white;
-  font-weight: 700;
+/* BUTTON */
+button, .button-link {
+  background: linear-gradient(135deg, #1e90ff, #00ffe0);
+  color: #000;
+  font-weight: 600;
   cursor: pointer;
-  transition: background 0.4s;
+  transition: background 0.4s, transform 0.3s ease;
+  padding: 0.7rem 1.2rem;
+  border-radius: 8px;
+  text-decoration: none;
+  display: inline-block;
+  box-shadow: 0 0 15px #1e90ff55;
 }
 
-button:hover {
-  background: linear-gradient(90deg, #0073e6, #1e90ff);
+button:hover, .button-link:hover {
+  background: linear-gradient(135deg, #00ffe0, #1e90ff);
+  transform: scale(1.05);
 }
 
+/* PROJECT CARD LAYOUT */
+#projects {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.project {
+  background-color: rgba(255, 255, 255, 0.03);
+  padding: 1rem;
+  border-radius: 10px;
+  border: 1px solid #2a2a2a;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 0 15px rgba(30, 144, 255, 0.4);
+}
+
+/* FOOTER */
 footer {
   text-align: center;
-  padding: 1.5rem;
+  padding: 2rem 1rem;
   background-color: #1f1f1f;
   border-top: 1px solid #333;
   font-size: 0.9rem;
   color: #aaa;
 }
 
-/* Cool animated glowing background dots */
-body::before {
-  content: '';
-  position: fixed;
-  width: 100vw;
-  height: 100vh;
-  background: radial-gradient(circle, #1e90ff33 2px, transparent 2px);
-  background-size: 60px 60px;
-  z-index: 0;
-  pointer-events: none;
-  animation: drift 20s linear infinite;
-  opacity: 0.03;
+footer img {
+  display: block;
+  margin: 0 auto 1rem;
+  filter: drop-shadow(0 0 8px #1e90ff);
 }
 
-@keyframes drift {
-  0% {
-    transform: translate(0, 0);
-  }
-  100% {
-    transform: translate(-60px, -60px);
-  }
+footer .social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
 }
 
-.theme-blue    { background: rgba(30,144,255,0.1); border-left: 5px solid #1e90ff; }
-.theme-green   { background: rgba(0,128,0,0.1); border-left: 5px solid #32cd32; }
-.theme-purple  { background: rgba(128,0,128,0.1); border-left: 5px solid #ba55d3; }
-.theme-orange  { background: rgba(255,140,0,0.1); border-left: 5px solid #ff8c00; }
+footer .social-icons img {
+  transition: transform 0.3s ease;
+  filter: brightness(0.9);
+}
+
+footer .social-icons img:hover {
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 8px #1e90ff);
+}
